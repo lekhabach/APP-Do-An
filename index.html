@@ -10,18 +10,14 @@
   <title>Bách Review Đồ Ăn Hải Phòng</title>
   <link rel="manifest" href="manifest.json">
 
-  <!-- Inter Font (system fallback nếu offline) -->
+  <!-- Inter Font -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
-  <!-- Leaflet -->
+  <!-- Leaflet CSS -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
-  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
-
-  <!-- Leaflet Routing Machine -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.css">
-  <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>
 
   <!-- App CSS -->
   <link rel="stylesheet" href="css/retro.css">
@@ -138,6 +134,10 @@
   <div id="toast" class="toast hidden">
     <span id="toast-msg"></span>
   </div>
+
+  <!-- Leaflet JS (cuối body để không block render) -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+  <script src="https://unpkg.com/leaflet-routing-machine@3.2.12/dist/leaflet-routing-machine.min.js"></script>
 
   <!-- App JS -->
   <script src="js/data.js"></script>

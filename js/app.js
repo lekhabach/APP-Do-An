@@ -15,20 +15,34 @@ document.addEventListener('DOMContentLoaded', () => {
     if (welcomed) return;
     welcomed = true;
 
-    welcomeScreen.style.transition = 'opacity 0.5s ease';
+    welcomeScreen.style.transition = 'opacity 0.4s ease';
     welcomeScreen.style.opacity    = '0';
 
     setTimeout(() => {
       welcomeScreen.classList.remove('active');
       mainScreen.classList.add('active');
-      initApp();
-    }, 500);
+
+      // Đợi browser render xong layout trước khi init Leaflet
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          try {
+            initApp();
+            // Fix Leaflet tile khi container vừa hiện ra
+            setTimeout(() => { if (typeof map !== 'undefined' && map) map.invalidateSize(); }, 300);
+          } catch (e) { console.error('initApp error:', e); }
+        });
+      });
+    }, 400);
   }
 
   document.getElementById('btn-start').addEventListener('click', showMainScreen);
+  document.getElementById('btn-start').addEventListener('touchend', (e) => {
+    e.preventDefault();
+    showMainScreen();
+  });
 
-  // Tự chuyển sau 4 giây
-  setTimeout(showMainScreen, 4000);
+  // Tự chuyển sau 3 giây
+  setTimeout(showMainScreen, 3000);
 
 
   /* ====================================================
