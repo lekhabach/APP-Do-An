@@ -2,7 +2,57 @@
 /* APP — Orchestrator chính                                */
 /* ====================================================== */
 
+/* ====================================================
+ * PWA INSTALL — "Tải App" button
+ * ==================================================== */
+let deferredInstallPrompt = null;
+
+window.addEventListener('beforeinstallprompt', (e) => {
+  e.preventDefault();
+  deferredInstallPrompt = e;
+});
+
+function isIOS() {
+  return /iPad|iPhone|iPod/.test(navigator.userAgent) && !window.MSStream;
+}
+
+function isInStandaloneMode() {
+  return window.matchMedia('(display-mode: standalone)').matches
+    || window.navigator.standalone === true;
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+
+  const btnInstall = document.getElementById('btn-install-app');
+
+  btnInstall.addEventListener('click', async () => {
+    if (isInStandaloneMode()) {
+      // Đã cài rồi
+      showToast('App đã được cài trên màn hình chính!');
+      return;
+    }
+
+    if (deferredInstallPrompt) {
+      // Android / Chrome: hiện popup cài đặt native
+      deferredInstallPrompt.prompt();
+      const { outcome } = await deferredInstallPrompt.userChoice;
+      if (outcome === 'accepted') deferredInstallPrompt = null;
+    } else if (isIOS()) {
+      // iOS Safari: hướng dẫn thủ công
+      document.getElementById('ios-install-modal').classList.remove('hidden');
+    } else {
+      // Trình duyệt không hỗ trợ install prompt → mở link
+      window.open('https://lekhabach.github.io/APP-Do-An/', '_blank');
+    }
+  });
+
+  document.getElementById('ios-modal-close').addEventListener('click', () => {
+    document.getElementById('ios-install-modal').classList.add('hidden');
+  });
+  document.getElementById('ios-modal-backdrop').addEventListener('click', () => {
+    document.getElementById('ios-install-modal').classList.add('hidden');
+  });
+
 
   /* ====================================================
    * WELCOME SCREEN
@@ -135,6 +185,18 @@ document.addEventListener('DOMContentLoaded', () => {
       addrRow.style.display  = 'none';
     }
 
+    // Bản đồ nhúng Google Maps
+    const mapContainer = document.getElementById('detail-map-container');
+    const mapIframe    = document.getElementById('detail-map-iframe');
+    const embedUrl     = getMapEmbedUrl(restaurant);
+    if (embedUrl) {
+      mapIframe.src = embedUrl;
+      mapContainer.classList.remove('hidden');
+    } else {
+      mapIframe.src = '';
+      mapContainer.classList.add('hidden');
+    }
+
     document.getElementById('detail-sheet').classList.remove('hidden');
 
     // Pan bản đồ đến quán
@@ -222,6 +284,34 @@ document.addEventListener('DOMContentLoaded', () => {
       setCollapsed(true);
     }
   }, { passive: true });
+
+
+  /* ====================================================
+   * HELPER — tạo URL embed Google Maps từ dữ liệu quán
+   * ==================================================== */
+  function getMapEmbedUrl(restaurant) {
+    // Ưu tiên dùng tọa độ lat/lng nếu có
+    if (restaurant.hasLocation) {
+      return `https://maps.google.com/maps?q=${restaurant.lat},${restaurant.lng}&z=17&output=embed`;
+    }
+
+    const url = restaurant.gmapsUrl;
+    if (!url) return null;
+
+    // Trích xuất tọa độ từ URL dạng: .../@lat,lng,zoom...
+    const atMatch = url.match(/@(-?\d+\.?\d+),(-?\d+\.?\d+)/);
+    if (atMatch) {
+      return `https://maps.google.com/maps?q=${atMatch[1]},${atMatch[2]}&z=17&output=embed`;
+    }
+
+    // Dạng: ?q=lat,lng hoặc &q=lat,lng
+    const qMatch = url.match(/[?&]q=(-?\d+\.?\d+),(-?\d+\.?\d+)/);
+    if (qMatch) {
+      return `https://maps.google.com/maps?q=${qMatch[1]},${qMatch[2]}&z=17&output=embed`;
+    }
+
+    return null;
+  }
 
 
   /* ====================================================

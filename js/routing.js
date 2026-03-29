@@ -75,6 +75,12 @@ function clearRoute() {
 
 /* ---------- Option 2: Mở Google Maps ---------- */
 function openGoogleMaps(restaurant) {
+  // Nếu có link Google Maps từ Sheet, dùng trực tiếp
+  if (restaurant.gmapsUrl) {
+    window.open(restaurant.gmapsUrl, '_blank');
+    return;
+  }
+
   if (!restaurant.hasLocation) {
     showToast('Quán này chưa có tọa độ');
     return;
@@ -87,7 +93,6 @@ function openGoogleMaps(restaurant) {
     const src = `${userLatLng.lat},${userLatLng.lng}`;
     url = `https://maps.google.com/?saddr=${src}&daddr=${dest}`;
   } else {
-    // Nếu chưa có GPS, chỉ hiển thị vị trí quán
     url = `https://maps.google.com/?q=${dest}`;
   }
 

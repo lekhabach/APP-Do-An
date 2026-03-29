@@ -56,6 +56,7 @@ async function fetchRestaurants() {
   const iLng     = col('lng', 'lon', 'longitude', 'kinh độ');
   const iAddress = col('mota', 'địa chỉ', 'dia chi', 'address');
   const iType    = col('type', 'loại', 'loai', 'danh mục');
+  const iGmaps   = col('maps', 'gmaps', 'google maps', 'link maps', 'link bản đồ', 'bản đồ', 'map link');
 
   const restaurants = [];
 
@@ -88,6 +89,7 @@ async function fetchRestaurants() {
       lat,
       lng,
       hasLocation: lat !== null && lng !== null && !isNaN(lat) && !isNaN(lng),
+      gmapsUrl:    str(iGmaps),
     });
   });
 

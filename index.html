@@ -40,6 +40,9 @@
       <button id="btn-start" class="btn-primary btn-welcome">
         Bắt đầu khám phá
       </button>
+      <button id="btn-install-app" class="btn-install-app">
+        ⬇️&nbsp; Tải App
+      </button>
     </div>
   </div>
 
@@ -104,6 +107,18 @@
           <span class="detail-address" id="detail-address">---</span>
         </div>
       </div>
+
+      <!-- Bản đồ nhúng Google Maps -->
+      <div id="detail-map-container" class="detail-map-container hidden">
+        <iframe
+          id="detail-map-iframe"
+          class="detail-map-iframe"
+          allowfullscreen=""
+          loading="lazy"
+          referrerpolicy="no-referrer-when-downgrade">
+        </iframe>
+      </div>
+
       <div class="detail-actions">
         <button class="btn-route-inapp" id="btn-route-inapp">
           🗺️&nbsp; Chỉ đường trong app
@@ -127,6 +142,29 @@
       <span class="routing-distance" id="routing-distance">-- km</span>
       <span class="routing-sep"> · </span>
       <span class="routing-time" id="routing-time">-- phút</span>
+    </div>
+  </div>
+
+  <!-- Modal hướng dẫn iOS Add to Home Screen -->
+  <div id="ios-install-modal" class="ios-modal hidden">
+    <div class="ios-modal-backdrop" id="ios-modal-backdrop"></div>
+    <div class="ios-modal-card">
+      <button class="ios-modal-close" id="ios-modal-close">✕</button>
+      <div class="ios-modal-title">Thêm vào màn hình chính</div>
+      <div class="ios-modal-steps">
+        <div class="ios-step">
+          <span class="ios-step-icon">1</span>
+          <span>Nhấn nút <strong>Chia sẻ</strong> <span class="ios-share-icon">⎙</span> ở thanh trình duyệt</span>
+        </div>
+        <div class="ios-step">
+          <span class="ios-step-icon">2</span>
+          <span>Chọn <strong>"Thêm vào màn hình chính"</strong></span>
+        </div>
+        <div class="ios-step">
+          <span class="ios-step-icon">3</span>
+          <span>Nhấn <strong>Thêm</strong> để lưu shortcut</span>
+        </div>
+      </div>
     </div>
   </div>
 
