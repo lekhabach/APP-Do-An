@@ -1,0 +1,126 @@
+/* ====================================================== */
+/* RETRO PAPER TEXTURE                                     */
+/* Subtle noise overlay for aged paper feel                */
+/* ====================================================== */
+
+/* Paper grain on main backgrounds */
+.screen-welcome,
+.bottom-drawer,
+.detail-card,
+.routing-panel {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.035'/%3E%3C/svg%3E");
+}
+
+/* Warm corner vignette on welcome */
+.welcome-content::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at top left,    rgba(212, 172, 13, 0.06) 0%, transparent 55%),
+    radial-gradient(ellipse at bottom right, rgba(192, 57, 43, 0.06) 0%, transparent 55%);
+  pointer-events: none;
+  border-radius: inherit;
+}
+
+/* Vintage gradient on header */
+.app-header {
+  background: linear-gradient(
+    135deg,
+    #C8402E 0%,
+    var(--color-primary) 40%,
+    #A93226 100%
+  ) !important;
+}
+
+/* Ornate top border on drawer — gold shimmer */
+.bottom-drawer::before {
+  content: '';
+  position: absolute;
+  top: -3px; left: 16px; right: 16px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-secondary),
+    var(--color-primary),
+    var(--color-secondary),
+    transparent
+  );
+  border-radius: 2px;
+}
+
+/* Inner frame decoration on detail card */
+.detail-card::after {
+  content: '';
+  position: absolute;
+  top: 10px; left: 10px; right: 10px; bottom: 10px;
+  border: 1px solid rgba(192, 57, 43, 0.08);
+  border-radius: 8px;
+  pointer-events: none;
+}
+
+/* Vintage shimmer button */
+.btn-welcome {
+  border: 2px solid rgba(255, 255, 255, 0.25);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 4px 14px rgba(192, 57, 43, 0.45);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.2);
+  position: relative;
+  overflow: hidden;
+}
+
+/* Shine sweep on button tap */
+.btn-welcome::after {
+  content: '';
+  position: absolute;
+  top: 0; left: -100%;
+  width: 100%; height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255,255,255,0.18), transparent);
+  transition: left 0.4s ease;
+}
+.btn-welcome:active::after { left: 100%; }
+
+/* Left accent border on restaurant cards */
+.restaurant-card {
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='200' height='200'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.75' numOctaves='4' stitchTiles='stitch'/%3E%3CfeColorMatrix type='saturate' values='0'/%3E%3C/filter%3E%3Crect width='200' height='200' filter='url(%23n)' opacity='0.025'/%3E%3C/svg%3E");
+}
+
+/* Gold accent on drawer title */
+.drawer-title::before,
+.drawer-title::after {
+  content: ' ✦ ';
+  color: var(--color-secondary);
+  opacity: 0.5;
+  font-size: 8px;
+}
+
+/* Retro routing panel top border */
+.routing-panel::before {
+  content: '';
+  position: absolute;
+  top: -3px; left: 16px; right: 16px;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--color-secondary),
+    var(--color-primary),
+    var(--color-secondary),
+    transparent
+  );
+}
+
+/* Subtle sepia on city logo for aged feel */
+.city-logo {
+  filter: drop-shadow(0 4px 10px rgba(192, 57, 43, 0.35)) sepia(0.08);
+}
+
+/* Retro action buttons — slight inset shadow */
+.btn-route-inapp, .btn-route-gmaps {
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.15),
+    0 2px 6px rgba(0, 0, 0, 0.2);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.15);
+}

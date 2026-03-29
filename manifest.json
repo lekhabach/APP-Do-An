@@ -1,0 +1,18 @@
+{
+  "name": "Bách Review Đồ Ăn Hải Phòng",
+  "short_name": "Bách Review",
+  "description": "Khám phá ẩm thực thành phố hoa phượng Hải Phòng",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#F5F0E8",
+  "theme_color": "#C0392B",
+  "orientation": "portrait",
+  "icons": [
+    {
+      "src": "assets/logo.svg",
+      "sizes": "any",
+      "type": "image/svg+xml",
+      "purpose": "any maskable"
+    }
+  ]
+}

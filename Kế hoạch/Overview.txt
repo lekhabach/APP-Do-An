@@ -1,0 +1,9 @@
+Tổng quan:
+    Phần mềm viết bằng Html5 chạy trên được cả Android và IOS
+    Tên: Bách review đồ ăn
+Chức năng
+    Hiển thị bản đồ TP Hải Phòng
+    Danh sách các quán ăn lưu trong link ở file link.txt
+    Vị trí người dùng (GPS)
+    Chỉ đường từ vị trí người dùng đến quán được chọn (ví trí được lưu sẵn trong link)
+    Hiện thị sơ bộ các thông tin: Tên quán, số điện thoại, mức giá

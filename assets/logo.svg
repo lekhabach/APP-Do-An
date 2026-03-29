@@ -1,0 +1,50 @@
+<!--
+  Logo Hải Phòng — PLACEHOLDER
+  Đây là bản SVG tạm thời mô phỏng phong cách logo chính thức 2024.
+  Thay thế file này bằng logo SVG chính thức tải từ:
+  https://haitrieu.com/blogs/logo-bieu-trung-tinh-thanh-viet-nam/
+-->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 200">
+
+  <!-- Vòng ngoài -->
+  <circle cx="100" cy="100" r="96" fill="#C0392B"/>
+  <circle cx="100" cy="100" r="90" fill="none" stroke="#D4AC0D" stroke-width="3"/>
+  <circle cx="100" cy="100" r="85" fill="#A93226"/>
+
+  <!-- 3 sóng Bạch Đằng (phía dưới) -->
+  <g fill="none" stroke="#FAF7F2" stroke-width="2.5" stroke-linecap="round" opacity="0.75">
+    <path d="M32 148 Q55 138 78 148 Q101 158 124 148 Q147 138 168 148"/>
+    <path d="M36 160 Q59 150 82 160 Q105 170 128 160 Q151 150 164 160"/>
+    <path d="M42 171 Q65 161 88 171 Q111 181 134 171 Q153 161 158 171"/>
+  </g>
+
+  <!-- 5 cánh hoa phượng -->
+  <g transform="translate(100,90)">
+    <ellipse cx="0" cy="-30" rx="9" ry="22" fill="#FAF7F2" opacity="0.92"
+             transform="rotate(0)"/>
+    <ellipse cx="0" cy="-30" rx="9" ry="22" fill="#FAF7F2" opacity="0.92"
+             transform="rotate(72)"/>
+    <ellipse cx="0" cy="-30" rx="9" ry="22" fill="#FAF7F2" opacity="0.92"
+             transform="rotate(144)"/>
+    <ellipse cx="0" cy="-30" rx="9" ry="22" fill="#FAF7F2" opacity="0.92"
+             transform="rotate(216)"/>
+    <ellipse cx="0" cy="-30" rx="9" ry="22" fill="#FAF7F2" opacity="0.92"
+             transform="rotate(288)"/>
+    <!-- Nhị hoa -->
+    <circle cx="0" cy="0" r="11" fill="#D4AC0D"/>
+    <circle cx="0" cy="0" r="6"  fill="#FAF7F2"/>
+  </g>
+
+  <!-- Ngôi sao 5 cánh (phía trên) -->
+  <polygon
+    points="100,34 103.8,47.2 117.6,47.2 106.8,55.5 110.6,68.7 100,60.4 89.4,68.7 93.2,55.5 82.4,47.2 96.2,47.2"
+    fill="#D4AC0D" opacity="0.95"/>
+
+  <!-- Chữ HP -->
+  <text x="100" y="178"
+        text-anchor="middle"
+        font-family="Georgia, 'Times New Roman', serif"
+        font-size="16" font-weight="bold"
+        fill="#FAF7F2" letter-spacing="7">HP</text>
+
+</svg>
