@@ -2,19 +2,18 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <base href="/APP-Do-An/">
   <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
-  <meta name="theme-color" content="#C0392B">
+  <meta name="theme-color" content="#0A5EB0">
   <meta name="apple-mobile-web-app-capable" content="yes">
-  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <meta name="apple-mobile-web-app-title" content="Bách Review">
   <title>Bách Review Đồ Ăn Hải Phòng</title>
   <link rel="manifest" href="manifest.json">
 
-  <!-- Google Fonts -->
+  <!-- Inter Font (system fallback nếu offline) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Lora:ital,wght@0,400;0,600;1,400&family=Courier+Prime:wght@400;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 
   <!-- Leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css">
@@ -36,17 +35,15 @@
   <div id="screen-welcome" class="screen screen-welcome active">
     <div class="welcome-content">
       <div class="welcome-logo">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSijJ5E2lV9O8_SSGl_Iv5jxvzrtjoGwPZycw&s" alt="Logo Hải Phòng" class="city-logo">
+        <img src="assets/Logo_moi.png" alt="Logo Hải Phòng" class="city-logo">
       </div>
-      <div class="welcome-ornament">✦ ✦ ✦</div>
-      <h1 class="welcome-title">BÁCH REVIEW</h1>
-      <h2 class="welcome-subtitle">ĐỒ ĂN HẢI PHÒNG</h2>
+      <h1 class="welcome-title">Bách Review</h1>
+      <h2 class="welcome-subtitle">Đồ ăn Hải Phòng</h2>
       <div class="welcome-divider-line"></div>
-      <p class="welcome-tagline">"Khám phá ẩm thực thành phố hoa phượng"</p>
+      <p class="welcome-tagline">Khám phá ẩm thực thành phố hoa phượng</p>
       <button id="btn-start" class="btn-primary btn-welcome">
-        BẮT ĐẦU KHÁM PHÁ
+        Bắt đầu khám phá
       </button>
-      <div class="welcome-footer">───── ✦ ─────</div>
     </div>
   </div>
 
@@ -58,8 +55,8 @@
     <!-- Header -->
     <header class="app-header">
       <div class="header-brand">
-        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSijJ5E2lV9O8_SSGl_Iv5jxvzrtjoGwPZycw&s" alt="Logo" class="header-logo">
-        <span class="header-title">BÁCH REVIEW</span>
+        <img src="assets/Logo_moi.png" alt="Logo" class="header-logo">
+        <span class="header-title">Bách Review</span>
       </div>
       <div class="header-actions">
         <button id="btn-locate" class="header-btn" title="Vị trí của tôi">📍</button>
@@ -74,7 +71,7 @@
       <div class="drawer-handle-bar" id="drawer-handle">
         <div class="drawer-handle-indicator"></div>
         <div class="drawer-handle-row">
-          <span class="drawer-title">── DANH SÁCH QUÁN ĂN ──</span>
+          <span class="drawer-title">Danh sách quán ăn</span>
           <button class="btn-drawer-collapse" id="btn-collapse-drawer" title="Thu nhỏ">▾</button>
         </div>
       </div>
@@ -113,7 +110,7 @@
       </div>
       <div class="detail-actions">
         <button class="btn-route-inapp" id="btn-route-inapp">
-          🗺&nbsp; Chỉ đường trong app
+          🗺️&nbsp; Chỉ đường trong app
         </button>
         <button class="btn-route-gmaps" id="btn-route-gmaps">
           🔗&nbsp; Mở Google Maps

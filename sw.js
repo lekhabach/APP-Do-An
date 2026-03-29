@@ -2,22 +2,23 @@
 /* SERVICE WORKER — PWA Cache                              */
 /* ====================================================== */
 
-const CACHE_NAME = 'bach-review-v1';
+const CACHE_NAME = 'bach-review-v3';
 
 const CACHE_ASSETS = [
-  '/',
-  '/index.html',
-  '/css/style.css',
-  '/css/retro.css',
-  '/js/data.js',
-  '/js/map.js',
-  '/js/routing.js',
-  '/js/app.js',
-  '/assets/logo.svg',
-  '/manifest.json',
+  './',
+  './index.html',
+  './css/style.css',
+  './css/retro.css',
+  './js/data.js',
+  './js/map.js',
+  './js/routing.js',
+  './js/app.js',
+  './assets/Logo_moi.png',
+  './assets/icon-192.png',
+  './assets/icon-512.png',
+  './manifest.json',
 ];
 
-// Cài đặt: cache các file tĩnh
 self.addEventListener('install', (e) => {
   e.waitUntil(
     caches.open(CACHE_NAME).then((cache) => cache.addAll(CACHE_ASSETS))
@@ -25,7 +26,6 @@ self.addEventListener('install', (e) => {
   self.skipWaiting();
 });
 
-// Kích hoạt: xóa cache cũ
 self.addEventListener('activate', (e) => {
   e.waitUntil(
     caches.keys().then((keys) =>
@@ -37,19 +37,16 @@ self.addEventListener('activate', (e) => {
   self.clients.claim();
 });
 
-// Fetch: network-first cho data, cache-first cho assets
 self.addEventListener('fetch', (e) => {
   const url = e.request.url;
 
-  // Luôn fetch mới cho Google Sheets và tile bản đồ
-  if (url.includes('docs.google.com') || url.includes('openstreetmap.org') || url.includes('osrm.org')) {
+  if (url.includes('docs.google.com') || url.includes('openstreetmap.org') || url.includes('osrm.org') || url.includes('unpkg.com') || url.includes('fonts.')) {
     e.respondWith(
       fetch(e.request).catch(() => caches.match(e.request))
     );
     return;
   }
 
-  // Cache-first cho assets tĩnh
   e.respondWith(
     caches.match(e.request).then((cached) => cached || fetch(e.request))
   );
