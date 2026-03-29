@@ -25,7 +25,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
   const btnInstall = document.getElementById('btn-install-app');
 
-  btnInstall.addEventListener('click', async () => {
+  if (btnInstall) btnInstall.addEventListener('click', async () => {
     if (isInStandaloneMode()) {
       // Đã cài rồi
       showToast('App đã được cài trên màn hình chính!');
@@ -46,12 +46,11 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  document.getElementById('ios-modal-close').addEventListener('click', () => {
-    document.getElementById('ios-install-modal').classList.add('hidden');
-  });
-  document.getElementById('ios-modal-backdrop').addEventListener('click', () => {
-    document.getElementById('ios-install-modal').classList.add('hidden');
-  });
+  const iosModalClose    = document.getElementById('ios-modal-close');
+  const iosModalBackdrop = document.getElementById('ios-modal-backdrop');
+  const iosModal         = document.getElementById('ios-install-modal');
+  if (iosModalClose)    iosModalClose.addEventListener('click',    () => iosModal.classList.add('hidden'));
+  if (iosModalBackdrop) iosModalBackdrop.addEventListener('click', () => iosModal.classList.add('hidden'));
 
 
   /* ====================================================

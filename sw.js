@@ -2,7 +2,7 @@
 /* SERVICE WORKER — PWA Cache                              */
 /* ====================================================== */
 
-const CACHE_NAME = 'bach-review-v3';
+const CACHE_NAME = 'bach-review-v4';
 
 const CACHE_ASSETS = [
   './',
