@@ -3,7 +3,7 @@
   "short_name": "Bách Review",
   "description": "Khám phá ẩm thực thành phố hoa phượng Hải Phòng",
   "id": "/",
-  "start_url": "./",
+  "start_url": "./index.html",
   "scope": "./",
   "display": "standalone",
   "background_color": "#F5F0E8",
